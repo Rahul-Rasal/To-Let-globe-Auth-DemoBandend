@@ -1,13 +1,19 @@
 import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
+import cors from "cors";
 import express from "express";
 import connectDB from "./config/db.js";
 import router from "./routes/userRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow only the frontend URL
+    credentials: true, // Allow cookies if used
+  })
+);
 
-app.use(express.json());
 app.use(express.json());
 app.use("/", router);
 app.use(errorHandler);
