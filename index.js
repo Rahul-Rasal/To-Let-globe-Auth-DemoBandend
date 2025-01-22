@@ -7,14 +7,14 @@ import router from "./routes/userRoutes.js";
 import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // Allow only the frontend URL
-//     credentials: true, // Allow cookies if used
-//   })
-// );
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow only the frontend URL
+    credentials: true, // Allow cookies if used
+  })
+);
 
-app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 app.use("/", router);
